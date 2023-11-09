@@ -40,6 +40,11 @@ public:
     {
         arr[m1][m2] = elem;
     }
+    char getArrayElement(int m)
+    {
+        m -= 1;
+        return arr[m / this->n][m % this->n];
+    }
 };
 class TicTacToe
 {
@@ -199,9 +204,7 @@ public:
         int x = -1;
         int y = -1;
 
-        // Traverse all cells, evaluate minimax function for
-        // all empty cells. And return the cell with optimal
-        // value.
+        // Traverse all cells, evaluate minimax function for all empty cells. And return the cell with optimal value.
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -279,10 +282,18 @@ public:
         showInstructions();
         while (true)
         {
+        mistake:
             printf("\tYour Move\n");
             printf("\tEnter Your Choice: ");
             scanf("%d", &choice);
-            board->updateArray(player, choice);
+            if (board->getArrayElement(choice) != ' ')
+            {
+                printf("\nThis box has already been taken, please select a different box\n");
+                goto mistake;
+            }
+            else
+                board->updateArray(player, choice);
+            printf("\nBoard after your move\n");
             showboard();
             if (hasAnyoneWon() != 0)
             {
