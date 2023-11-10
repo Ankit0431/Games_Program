@@ -339,8 +339,10 @@ public:
 //class for 2 player
 class TwoPlayer: public TicTacToe
 {
+    //player1: '0' player2: 'X'
     public: char player1 = HUMANMOVE;
     public: char player2 = COMPUTERMOVE;
+    // play function for 2 player game
     void play(){
         int choice;
         printf("\t\t\tThe Game Begins!");
