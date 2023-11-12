@@ -1,6 +1,6 @@
 #include <iostream>
-#include "TicTacToe.h"
-#include "SudokuSolver.h"
+#include "Tic-Tac-Toe/TicTacToe.h"
+#include "Sudoku/SudokuSolver.h"
 int main()
 {
     int game, mode;
