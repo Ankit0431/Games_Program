@@ -20,15 +20,6 @@ public:
                 arr[i][j] = ' ';
         }
     }
-    void showArray()
-    {
-        printf(" \n \n ");
-        printf(" \t \t \t % c | % c | % c \n ", arr[0][0], arr[0][1], arr[0][2]);
-        printf(" \t \t \t -------------- \n ");
-        printf(" \t \t \t % c | % c | % c \n ", arr[1][0], arr[1][1], arr[1][2]);
-        printf(" \t \t \t -------------- \n ");
-        printf(" \t \t \t % c | % c | % c \n \n ", arr[2][0], arr[2][1], arr[2][2]);
-    }
     void updateArray(char elem, int m)
     {
         m -= 1;

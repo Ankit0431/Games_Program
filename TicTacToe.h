@@ -1,6 +1,6 @@
 #ifndef TWODARRAY_H
 #define TWODARRAY_H
-    #include "TwoDArray.h"
+#include "TwoDArray.h"
 #endif // TWODARRAY_H
 #define COMPUTERMOVE 'X'
 #define HUMANMOVE 'O'
@@ -25,10 +25,6 @@ public:
         printf("\t\t\t-----------\n");
         printf("\t\t\t 7 | 8 | 9 \n\n");
         printf("-\t-\t-\t-\t-\t-\t-\t-\t-\t-\n\n");
-    }
-    void showboard()
-    {
-        board->showArray();
     }
     // This functions returns true if there are still moves left to play, false otherwise
     bool isMovesLeft()
@@ -82,7 +78,16 @@ public:
         }
         return 0;
     }
+    void showTicTacToe()
+    {
+        printf(" \n \n ");
+        printf(" \t \t \t % c | % c | % c \n ", board->arr[0][0], board->arr[0][1], board->arr[0][2]);
+        printf(" \t \t \t -------------- \n ");
+        printf(" \t \t \t % c | % c | % c \n ", board->arr[1][0], board->arr[1][1], board->arr[1][2]);
+        printf(" \t \t \t -------------- \n ");
+        printf(" \t \t \t % c | % c | % c \n \n ", board->arr[2][0], board->arr[2][1], board->arr[2][2]);
+    }
     // This is the play function, this executes the game of tic tac toe
 };
-#include "SingleTTTPlayer.h"
-#include "TwoTTTPlayer.h"
+#include "SinglePlayerTicTacToe.h"
+#include "TwoPlayerTicTacToe.h"
