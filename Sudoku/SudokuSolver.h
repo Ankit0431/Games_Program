@@ -56,14 +56,15 @@ public:
         int m;
         char elem;
         for (int i = 0; i < 9; i++)
-        {
+        {   SudokuSolver::displayInputInstructions();
             while (true)
             {
                 printf("Enter the sudoku to solve in the following manner\n");
             mistake:
-                SudokuSolver::displayInputInstructions();
+                
                 printf("Entering for %d internal matrix: ", i + 1);
-                scanf("%d,%c", &m, &elem);
+                scanf("%d,%c",&m,&elem);
+                fflush(stdin);
                 if (m < 0)
                     break;
                 if (m > 9)
@@ -71,8 +72,8 @@ public:
                     printf("Wrong input, please try again!\n");
                     goto mistake;
                 }
-                m = m + (i % 3) * 3 + ((m - 1) / 3 + (i % 3) * 3) * 6 + (i / 3) * 9; // logic to convert m to suitable input for 9x9 2d array
-                sudoku->updateArray(m, elem);
+                m = m + (i % 3) * 3 + ((m - 1) / 3 + (i / 3) * 3) * 6 + (i / 3) * 9; // logic to convert m to suitable input for 9x9 2d array
+                sudoku->updateArray(elem, m);
             }
         }
     }
