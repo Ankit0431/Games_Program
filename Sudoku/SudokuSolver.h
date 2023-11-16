@@ -39,4 +39,41 @@ public:
             solve(r + 1, 0);
         }
     }
+    void static displayInputInstructions()
+    {
+        printf("Choose a cell numbered from 1 to 9 as below\n\n");
+        printf("\t\t\t 1 | 2 | 3 \n");
+        printf("\t\t\t-----------\n");
+        printf("\t\t\t 4 | 5 | 6 \n");
+        printf("\t\t\t-----------\n");
+        printf("\t\t\t 7 | 8 | 9 \n\n");
+        printf("-\t-\t-\t-\t-\t-\t-\t-\t-\t-\n\n");
+        printf("Enter the cell number along with the value for that cell like (Location,Value)\n");
+        printf("To move to next internal matrix, enter -1,-1\n");
+    }
+    void inputSudoku()
+    {
+        int m;
+        char elem;
+        for (int i = 0; i < 9; i++)
+        {
+            while (true)
+            {
+                printf("Enter the sudoku to solve in the following manner\n");
+            mistake:
+                SudokuSolver::displayInputInstructions();
+                printf("Entering for %d internal matrix: ", i + 1);
+                scanf("%d,%c", &m, &elem);
+                if (m < 0)
+                    break;
+                if (m > 9)
+                {
+                    printf("Wrong input, please try again!\n");
+                    goto mistake;
+                }
+                m = m + (i % 3) * 3 + ((m - 1) / 3 + (i % 3) * 3) * 6 + (i / 3) * 9; // logic to convert m to suitable input for 9x9 2d array
+                sudoku->updateArray(m, elem);
+            }
+        }
+    }
 };

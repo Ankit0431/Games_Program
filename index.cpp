@@ -38,18 +38,21 @@ int main()
         }
         printf("\n\n\t\tThanks for playing!\n");
         break;
-    
+
     case 2:
         printf("\nSelect Mode: \n1: Challenge \n2: Solution \n");
         cin >> mode;
-        if (mode == 1){
+        if (mode == 1)
+        {
             printf("\n\t\tMODE UNDER DEVELOPMENT, SORRY FOR THE INCONVIENCE\n");
         }
-        else{
+        else
+        {   
+            //Ankit ne hi likh diya code matrix input ka
+            printf("\t\t\tSolve 9x9 sudoku!\n");
             SudokuSolver s1;
-            //sudoku enter karne ka logic Akshata Likhegi yayy
-            s1.solve(0,0);
+            s1.inputSudoku();
+            s1.solve(0, 0);
         }
     }
-        
 }
