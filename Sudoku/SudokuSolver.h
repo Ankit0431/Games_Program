@@ -55,14 +55,15 @@ public:
         int m;
         char elem;
         for (int i = 0; i < 9; i++)
-        {   SudokuSolver::displayInputInstructions();
+        {
+            SudokuSolver::displayInputInstructions();
             while (true)
             {
                 printf("Enter the sudoku to solve in the following manner\n");
             mistake:
-                
+
                 printf("Entering for %d internal matrix: ", i + 1);
-                scanf("%d,%c",&m,&elem);
+                scanf("%d,%c", &m, &elem);
                 fflush(stdin);
                 if (m < 0)
                     break;

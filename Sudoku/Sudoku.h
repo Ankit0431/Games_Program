@@ -8,6 +8,7 @@ class Sudoku
 {
 public:
     TwoDArray *sudoku;
+
 public:
     Sudoku(int n)
     {
