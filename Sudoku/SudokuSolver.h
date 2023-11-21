@@ -1,4 +1,3 @@
-#include "Sudoku.h"
 class SudokuSolver : public Sudoku
 {
 public:

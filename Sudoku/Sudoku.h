@@ -1,8 +1,9 @@
 #include <iostream>
 #ifndef TWODARRAY_H
 #define TWODARRAY_H
-#include "TwoDArray.h"
+#include "../TwoDArray.h"
 #endif // TWODARRAY_H
+using namespace std;
 class Sudoku
 {
 public:
@@ -94,3 +95,5 @@ public:
         return false;
     }
 };
+#include "Challenge.h"
+#include "SudokuSolver.h"

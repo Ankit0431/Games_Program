@@ -33,10 +33,10 @@ public:
                     switch (hasAnyoneWon())
                     {
                     case 1:
-                        printf("\t\t\tPlayer 2 Wins!\n");
+                        printf("\t\t\tPlayer 1 Wins!\n");
                         break;
                     case -1:
-                        printf("\t\t\tPlayer 1 Wins!\n");
+                        printf("\t\t\tPlayer 2 Wins!\n");
                         break;
                     }
                     break;

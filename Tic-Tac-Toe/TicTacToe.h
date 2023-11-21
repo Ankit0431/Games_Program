@@ -1,6 +1,6 @@
 #ifndef TWODARRAY_H
 #define TWODARRAY_H
-#include "TwoDArray.h"
+#include "../TwoDArray.h"
 #endif // TWODARRAY_H
 #define COMPUTERMOVE 'X'
 #define HUMANMOVE 'O'

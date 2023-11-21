@@ -1,11 +1,11 @@
-#include "Sudoku.h"
+
 class Challenge : public Sudoku{
     public:
         char choice;
     public:
         void userChoice(){
-            cout<<"\n\t\tEnter any letter from A to E for a Sudoku Challenge: ";
-            cin>>choice;
+            printf("\n\t\tEnter any letter from A to E for a Sudoku Challenge: ");
+            scanf("%d",&choice);
             if(choice=='A'||choice=='a'){
                 board1();
             }
