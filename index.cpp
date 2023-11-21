@@ -7,7 +7,7 @@ int main()
     while (true)
     {
         bool playagain = true;
-        printf("\nSelect Game: \n1: Tic-Tac-Toe\n2: Sudoku\n3: Hangman\n4: Exit");
+        printf("\nSelect Game: \n1: Tic-Tac-Toe\n2: Sudoku\n3: Hangman\n4: Exit\n");
         cin >> game;
         switch (game)
         {

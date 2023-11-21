@@ -11,7 +11,6 @@ public:
         }
         if (sudoku->arr[r][c] != ' ')
         { // looks for empty cells i.e. cells with zero
-            // cout<<"Empty cell executed: "<<++iota<<endl;
             findEmptyCell(r, c);
         }
         else
@@ -70,6 +69,11 @@ public:
                 if (m > 9)
                 {
                     printf("Wrong input, please try again!\n");
+                    goto mistake;
+                }
+                else if (elem < '1' || elem > '9')
+                {
+                    printf("Numbers in sudoku can only be between 1 and 9, please try again!\n");
                     goto mistake;
                 }
                 m = m + (i % 3) * 3 + ((m - 1) / 3 + (i / 3) * 3) * 6 + (i / 3) * 9; // logic to convert m to suitable input for 9x9 2d array
