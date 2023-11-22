@@ -39,7 +39,7 @@ public:
             printf("\n");
             if (i % 3 == 2)
             {
-                printf("___________________________________________________________________________");
+                printf("_________________________________________________________________________________________________");
             }
             printf("\n");
         }
@@ -97,4 +97,7 @@ public:
     }
 };
 #include "Challenge.h"
+#ifndef SOLVER_H
+#define SOLVER_H
 #include "SudokuSolver.h"
+#endif // TWODARRAY_H

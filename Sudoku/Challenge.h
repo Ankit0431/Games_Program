@@ -1,4 +1,7 @@
-
+#ifndef SOLVER_H
+#define SOLVER_H
+#include "SudokuSolver.h"
+#endif // TWODARRAY_H
 class Challenge : public Sudoku
 {
 public:
@@ -7,7 +10,8 @@ public:
 public:
     void userChoice()
     {
-        printf("\n\t\tEnter any letter from A to E for a Sudoku Challenge: ");
+        char ch;
+        printf("\nEnter any letter from A to E for a Sudoku Challenge: ");
         scanf("%d", &choice);
         if (choice == 'A' || choice == 'a')
         {
@@ -30,6 +34,53 @@ public:
             board5();
         }
         displaySudoku();
+        printf("Do you want to enter your solution? (Y/N): ");
+        fflush(stdin);
+        scanf("%c",&ch);
+        if(ch=='Y'|| ch=='y'){
+            checkSolution();
+        }
+    }
+    void acceptAnswer(){
+        for(int i=0;i<sudoku->n;i++){
+            for(int j=0;j<sudoku->n;j++){
+                if(sudoku->arr[i][j]!=' '){
+                    fflush(stdin);
+                    printf("Enter element for Row %d and Column %d: ",i+1,j+1);
+                    scanf("%c",&sudoku->arr[i][j]);
+                }
+            }
+        }
+    }
+    bool compare(SudokuSolver soln){
+        
+        soln.solve(0,0);
+        if(soln.sudoku == this->sudoku)
+            return true;
+        return false;// answer and input comparison
+        // if right return 0 else return 1
+    }
+    void checkSolution(){
+        int tries=3;
+        bool val;
+        SudokuSolver soln;
+        soln.sudoku = this->sudoku;
+        while(tries!=0){
+            acceptAnswer();
+            val=compare(soln);
+            if(!val){
+                printf("OOPS! Wrong Solution.Try Again!");
+                tries--;
+            }
+            else{
+                printf("Congratulations! You're Right!");
+            }
+        }
+        if(tries==0){
+            printf("The Solution was: \n");
+            soln.displaySudoku();
+            //display
+        }
     }
     void board1()
     {
@@ -219,4 +270,5 @@ public:
         sudoku->arr[8][6] = '9';
         sudoku->arr[8][7] = '7';
     }
+
 };
