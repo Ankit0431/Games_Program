@@ -77,7 +77,8 @@ int main()
             cin >> mode;
             if (mode == 1)
             {
-                printf("\n\t\tMODE UNDER DEVELOPMENT, SORRY FOR THE INCONVIENCE\n");
+                Challenge c1;
+                c1.userChoice();
             }
             else
             {
@@ -87,6 +88,7 @@ int main()
                 s1.inputSudoku();
                 s1.solve(0, 0);
             }
+            break;
         case 3: // case for hangman
         case 4:
             printf("\nThank you so much for playing! I hope you enjoyed, see you again soon! GGs only!\n");
