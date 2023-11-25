@@ -5,7 +5,7 @@ class TwoDArray
 public:
     char **arr; // dynamic 2d array pointer
     int size;   // size of the array(total size in memory; n*n)
-    int n;      // dimetion of the array, only array of dimention nxn are allowed for tic-tac-toe
+    int n;      // dimetion of the array, only array of dimention nxn are allowed for selected games
     TwoDArray(int n)
     { // constructor
         this->n = n;
