@@ -18,7 +18,7 @@ private:
 public:
     Hangman()
     {
-        this->tries = 8;
+        this->tries = 6;
     }
     bool checkLetter(char guess)
     {
@@ -86,6 +86,7 @@ public:
             printf("\n\t\t");
             word->display();
             cout << "\nHint: " << hint << endl;
+            displayHangedMan(tries);
             printf("\nTries left: %d", tries);
             printf("\nEnter your guess: ");
             fflush(stdin);
@@ -104,94 +105,190 @@ public:
             }
             else
             {
-                if (tries == 8)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           "     |\n"
-                           "     |\n"
-                           "     |\n"
-                           "     |\n"
-                           "     |\n");
-                }
-                if (tries == 7)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           " |   |\n"
-                           "     |\n"
-                           "     |\n"
-                           "     |\n"
-                           "     |\n");
-                }
-                else if (tries == 6)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           " |   |\n"
-                           " O   |\n"
-                           "     |\n"
-                           "     |\n"
-                           "     |\n");
-                }
-                else if (tries == 5)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           " |   |\n"
-                           " O   |\n"
-                           " |   |\n"
-                           "     |\n"
-                           "     |\n");
-                }
-                else if (tries == 4)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           " |   |\n"
-                           " O   |\n"
-                           "/|   |\n"
-                           "     |\n"
-                           "     |\n");
-                }
-                else if (tries == 3)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           " |   |\n"
-                           " O   |\n"
-                           "/|\\  |\n"
-                           "     |\n"
-                           "     |\n");
-                }
-                else if (tries == 2)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           " |   |\n"
-                           " O   |\n"
-                           "/|\\  |\n"
-                           "/    |\n"
-                           "     |\n");
-                }
-                else if (tries == 1)
-                {
-                    printf("==========\n"
-                           " +---+\n"
-                           " |   |\n"
-                           " O   |\n"
-                           "/|\\  |\n"
-                           "/ \\  |\n"
-                           "     |\n"
-                           "==========");
-                }
                 tries--;
+                // displayHangedMan(tries);
+                // if (tries == 8)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            "     |\n"
+                //            "     |\n"
+                //            "     |\n"
+                //            "     |\n"
+                //            "     |\n");
+                // }
+                // if (tries == 7)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            " |   |\n"
+                //            "     |\n"
+                //            "     |\n"
+                //            "     |\n"
+                //            "     |\n");
+                // }
+                // else if (tries == 6)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            " |   |\n"
+                //            " O   |\n"
+                //            "     |\n"
+                //            "     |\n"
+                //            "     |\n");
+                // }
+                // else if (tries == 5)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            " |   |\n"
+                //            " O   |\n"
+                //            " |   |\n"
+                //            "     |\n"
+                //            "     |\n");
+                // }
+                // else if (tries == 4)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            " |   |\n"
+                //            " O   |\n"
+                //            "/|   |\n"
+                //            "     |\n"
+                //            "     |\n");
+                // }
+                // else if (tries == 3)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            " |   |\n"
+                //            " O   |\n"
+                //            "/|\\  |\n"
+                //            "     |\n"
+                //            "     |\n");
+                // }
+                // else if (tries == 2)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            " |   |\n"
+                //            " O   |\n"
+                //            "/|\\  |\n"
+                //            "/    |\n"
+                //            "     |\n");
+                // }
+                // else if (tries == 1)
+                // {
+                //     printf("==========\n"
+                //            " +---+\n"
+                //            " |   |\n"
+                //            " O   |\n"
+                //            "/|\\  |\n"
+                //            "/ \\  |\n"
+                //            "     |\n"
+                //            "==========");
+                // }
             }
         }
         if (tries == 0)
         {
+            displayHangedMan(tries);
             printf("\nYou have no more tries, the man has hanged, you LOOSE\n");
             cout << "Answer: " << answer << endl;
+        }
+    }
+    void displayHangedMan(int tries)
+    {
+        switch (tries)
+        {
+        // case 6:
+        // {
+        //     printf("==========\n"
+        //            " +---+\n"
+        //            " |   |\n"
+        //            " O   |\n"
+        //            "     |\n"
+        //            "     |\n"
+        //            "     |\n");
+        //     break;
+        // }
+        case 5:
+        {
+            printf("==========\n"
+                   " +---+\n"
+                   " |   |\n"
+                   " O   |\n"
+                   "     |\n"
+                   "     |\n"
+                   "     |\n");
+            break;
+        }
+        case 4:
+        {
+            printf("==========\n"
+                   " +---+\n"
+                   " |   |\n"
+                   " O   |\n"
+                   " |   |\n"
+                   "     |\n"
+                   "     |\n");
+            break;
+        }
+        case 3:
+        {
+            printf("==========\n"
+                   " +---+\n"
+                   " |   |\n"
+                   " O   |\n"
+                   "/|   |\n"
+                   "     |\n"
+                   "     |\n");
+            break;
+        }
+        case 2:
+        {
+            printf("==========\n"
+                   " +---+\n"
+                   " |   |\n"
+                   " O   |\n"
+                   "/|\\  |\n"
+                   "     |\n"
+                   "     |\n");
+            break;
+        }
+        case 1:
+        {
+            printf("==========\n"
+                   " +---+\n"
+                   " |   |\n"
+                   " O   |\n"
+                   "/|\\  |\n"
+                   "/    |\n"
+                   "     |\n");
+            break;
+        }
+        case 0:
+        {
+            printf("==========\n"
+                   " +---+\n"
+                   " |   |\n"
+                   " O   |\n"
+                   "/|\\  |\n"
+                   "/ \\  |\n"
+                   "     |\n"
+                   "==========");
+            break;
+        }
+        default:
+        {
+            printf("==========\n"
+                   " +---+\n"
+                   " |   |\n"
+                   "     |\n"
+                   "     |\n"
+                   "     |\n"
+                   "     |\n");
+        }
         }
     }
 };
