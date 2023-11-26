@@ -9,7 +9,7 @@ using namespace std;
 class Hangman
 {
 private:
-// public:
+    // public:
     OneDArray *word;
     int tries;
     string answer;
@@ -18,7 +18,7 @@ private:
 public:
     Hangman()
     {
-        this->tries = 5;
+        this->tries = 8;
     }
     bool checkLetter(char guess)
     {
@@ -28,7 +28,7 @@ public:
         {
             if (guess == answer[i])
             {
-                word->insert(guess,i);
+                word->insert(guess, i);
                 flag = true;
             }
             i++;
@@ -104,7 +104,87 @@ public:
             }
             else
             {
-                printf("\nOOPS, you seems stupid, wrong choice\n");
+                if (tries == 8)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           "     |\n"
+                           "     |\n"
+                           "     |\n"
+                           "     |\n"
+                           "     |\n");
+                }
+                if (tries == 7)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           " |   |\n"
+                           "     |\n"
+                           "     |\n"
+                           "     |\n"
+                           "     |\n");
+                }
+                else if (tries == 6)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           " |   |\n"
+                           " O   |\n"
+                           "     |\n"
+                           "     |\n"
+                           "     |\n");
+                }
+                else if (tries == 5)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           " |   |\n"
+                           " O   |\n"
+                           " |   |\n"
+                           "     |\n"
+                           "     |\n");
+                }
+                else if (tries == 4)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           " |   |\n"
+                           " O   |\n"
+                           "/|   |\n"
+                           "     |\n"
+                           "     |\n");
+                }
+                else if (tries == 3)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           " |   |\n"
+                           " O   |\n"
+                           "/|\\  |\n"
+                           "     |\n"
+                           "     |\n");
+                }
+                else if (tries == 2)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           " |   |\n"
+                           " O   |\n"
+                           "/|\\  |\n"
+                           "/    |\n"
+                           "     |\n");
+                }
+                else if (tries == 1)
+                {
+                    printf("==========\n"
+                           " +---+\n"
+                           " |   |\n"
+                           " O   |\n"
+                           "/|\\  |\n"
+                           "/ \\  |\n"
+                           "     |\n"
+                           "==========");
+                }
                 tries--;
             }
         }
@@ -121,16 +201,16 @@ int main()
     // cout << Hangman::generateRandomNumber() << endl;
     // h.readWordFromCsv(Hangman::generateRandomNumber());
     // h.getAnswer();
-     h.play();
-//     int i = 0;
-//     OneDArray word(h.answer.length());
-//     while (h.answer[i] != '\0')
-//         {
-//             if ('e' == h.answer[i])
-//             {
-                
-//             }
-//             i++;
-//         }
-//     word.display();
+    h.play();
+    //     int i = 0;
+    //     OneDArray word(h.answer.length());
+    //     while (h.answer[i] != '\0')
+    //         {
+    //             if ('e' == h.answer[i])
+    //             {
+
+    //             }
+    //             i++;
+    //         }
+    //     word.display();
 }
