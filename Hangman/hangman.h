@@ -4,12 +4,11 @@
 #include <random>  //for random number e=generator
 #include <chrono>  //random number seeder
 #include <fstream> //for reading csv files
-#include "OneDArray.cpp"
+#include "OneDArray.h"
 using namespace std;
 class Hangman
 {
 private:
-    // public:
     OneDArray *word;
     int tries;
     string answer;
@@ -37,17 +36,14 @@ public:
     }
     static int generateRandomNumber()
     {
-        // // Providing a seed value
+        // Providing a seed value
         unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
         std::mt19937 gen(seed);
-
         // Define the range
         int lower_bound = 1;
         int upper_bound = 110;
-
         // Create a distribution for the range
         uniform_int_distribution<int> distribution(lower_bound, upper_bound);
-
         // Generate a random number
         int random = distribution(gen);
         return random;
@@ -58,7 +54,7 @@ public:
         string line;
         try
         {
-            file.open("Hangman_Words.csv");
+            file.open("Hangman/Hangman_Words.csv");
             while (getline(file, line) && (n > 0))
             {
                 n--;
@@ -95,6 +91,8 @@ public:
             {
                 if (word->matchWithString(answer))
                 {
+                    printf("\n\t\t");
+                    word->display();
                     printf("\nCongragulatiions, you have won!");
                     break;
                 }
@@ -105,89 +103,8 @@ public:
             }
             else
             {
+                printf("\nWORNG guess bruh!, try again\n");
                 tries--;
-                // displayHangedMan(tries);
-                // if (tries == 8)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            "     |\n"
-                //            "     |\n"
-                //            "     |\n"
-                //            "     |\n"
-                //            "     |\n");
-                // }
-                // if (tries == 7)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            " |   |\n"
-                //            "     |\n"
-                //            "     |\n"
-                //            "     |\n"
-                //            "     |\n");
-                // }
-                // else if (tries == 6)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            " |   |\n"
-                //            " O   |\n"
-                //            "     |\n"
-                //            "     |\n"
-                //            "     |\n");
-                // }
-                // else if (tries == 5)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            " |   |\n"
-                //            " O   |\n"
-                //            " |   |\n"
-                //            "     |\n"
-                //            "     |\n");
-                // }
-                // else if (tries == 4)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            " |   |\n"
-                //            " O   |\n"
-                //            "/|   |\n"
-                //            "     |\n"
-                //            "     |\n");
-                // }
-                // else if (tries == 3)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            " |   |\n"
-                //            " O   |\n"
-                //            "/|\\  |\n"
-                //            "     |\n"
-                //            "     |\n");
-                // }
-                // else if (tries == 2)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            " |   |\n"
-                //            " O   |\n"
-                //            "/|\\  |\n"
-                //            "/    |\n"
-                //            "     |\n");
-                // }
-                // else if (tries == 1)
-                // {
-                //     printf("==========\n"
-                //            " +---+\n"
-                //            " |   |\n"
-                //            " O   |\n"
-                //            "/|\\  |\n"
-                //            "/ \\  |\n"
-                //            "     |\n"
-                //            "==========");
-                // }
             }
         }
         if (tries == 0)
@@ -201,17 +118,6 @@ public:
     {
         switch (tries)
         {
-        // case 6:
-        // {
-        //     printf("==========\n"
-        //            " +---+\n"
-        //            " |   |\n"
-        //            " O   |\n"
-        //            "     |\n"
-        //            "     |\n"
-        //            "     |\n");
-        //     break;
-        // }
         case 5:
         {
             printf("==========\n"
@@ -291,23 +197,7 @@ public:
         }
         }
     }
+    void getAnswer(){
+        cout<<answer<<endl;
+    }
 };
-int main()
-{
-    Hangman h;
-    // cout << Hangman::generateRandomNumber() << endl;
-    // h.readWordFromCsv(Hangman::generateRandomNumber());
-    // h.getAnswer();
-    h.play();
-    //     int i = 0;
-    //     OneDArray word(h.answer.length());
-    //     while (h.answer[i] != '\0')
-    //         {
-    //             if ('e' == h.answer[i])
-    //             {
-
-    //             }
-    //             i++;
-    //         }
-    //     word.display();
-}

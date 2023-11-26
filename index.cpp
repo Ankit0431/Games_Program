@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Tic-Tac-Toe/TicTacToe.h"
 #include "Sudoku/Sudoku.h"
+#include "Hangman/hangman.h"
 int main()
 {
     int game, mode;
@@ -11,7 +12,7 @@ int main()
         cin >> game;
         switch (game)
         {
-        case 1:
+        case 1:{
             playagain = true;
             printf("\nSelect Mode: \n1: One Player \n2: Two Player \n");
             cin >> mode;
@@ -71,8 +72,8 @@ int main()
                 }
             }
             break;
-
-        case 2:
+        }
+        case 2:{
             printf("\nSelect Mode: \n1: Challenge \n2: Solution \n");
             cin >> mode;
             if (mode == 1)
@@ -89,7 +90,29 @@ int main()
                 s1.solve(0, 0);
             }
             break;
-        case 3: // case for hangman
+        }
+        case 3:{
+        Hangman h1;
+            while (playagain)
+            {
+                Hangman h1;
+                h1.play();
+                int choice;
+                printf("\nOne more?\n1: Bring it ON!\n2: Hell nah\n");
+                scanf("%d", &choice);
+                if (choice != 1)
+                {
+                    printf("\nAlright then, have a good one!\n");
+                    playagain = false;
+                }
+                else
+                    printf("\nYeah thats what i am talking about, BRING IT ON!\n");
+            }
+            // cout<<Hangman::generateRandomNumber()<<endl;
+            // h1.readWordFromCsv(Hangman::generateRandomNumber());
+            // h1.getAnswer();
+            break;
+        }
         case 4:
             printf("\nThank you so much for playing! I hope you enjoyed, see you again soon! GGs only!\n");
             exit(0);
