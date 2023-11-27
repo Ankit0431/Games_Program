@@ -12,7 +12,8 @@ int main()
         cin >> game;
         switch (game)
         {
-        case 1:{
+        case 1:
+        {
             playagain = true;
             printf("\nSelect Mode: \n1: One Player \n2: Two Player \n");
             cin >> mode;
@@ -37,19 +38,19 @@ int main()
                         difficulty = false;
                         break;
                     default:
-                        printf("\nChoose right mate\n");
+                        printf("\nPlease choose the correct option\n");
                         goto wrongip;
                     }
                     t1.play(difficulty);
-                    printf("\nOne more?\n1: Bring it ON!\n2: Hell nah\n");
+                    printf("\nPlay again?\n1: Yes!\n2: No\n");
                     scanf("%d", &choice);
                     if (choice != 1)
                     {
-                        printf("\nAlright then, have a good one!\n");
+                        printf("\nThankyou for playing!\n");
                         playagain = false;
                     }
                     else
-                        printf("\nYeah thats what i am talking about, BRING IT ON!\n");
+                        printf("\nWelcome back\n");
                 }
             }
             else
@@ -60,20 +61,21 @@ int main()
                     TwoPlayerTicTacToe t1;
                     printf("\t\t\t\t\t\tFOR 2 PLAYERS\n");
                     t1.play();
-                    printf("\nOne more?\n1: Bring it ON!\n2: Hell nah\n");
+                    printf("\nPlay again?\n1: Yes!\n2: No\n");
                     scanf("%d", &choice);
                     if (choice != 1)
                     {
-                        printf("\nAlright then, have a good one!\n");
+                        printf("\nThankyou for playing!\n");
                         playagain = false;
                     }
                     else
-                        printf("\nYeah thats what i am talking about, BRING IT ON!\n");
+                        printf("\nWelcome back!\n");
                 }
             }
             break;
         }
-        case 2:{
+        case 2:
+        {
             printf("\nSelect Mode: \n1: Challenge \n2: Solution \n");
             cin >> mode;
             if (mode == 1)
@@ -91,22 +93,23 @@ int main()
             }
             break;
         }
-        case 3:{
-        Hangman h1;
+        case 3:
+        {
+            Hangman h1;
             while (playagain)
             {
                 Hangman h1;
                 h1.play();
                 int choice;
-                printf("\nOne more?\n1: Bring it ON!\n2: Hell nah\n");
+                printf("\nPlay again?\n1: Yes!\n2: No\n");
                 scanf("%d", &choice);
                 if (choice != 1)
                 {
-                    printf("\nAlright then, have a good one!\n");
+                    printf("\nThankyou for playing!\n");
                     playagain = false;
                 }
                 else
-                    printf("\nYeah thats what i am talking about, BRING IT ON!\n");
+                    printf("\nWelcome back!\n");
             }
             // cout<<Hangman::generateRandomNumber()<<endl;
             // h1.readWordFromCsv(Hangman::generateRandomNumber());
