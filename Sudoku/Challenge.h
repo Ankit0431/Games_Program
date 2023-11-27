@@ -1,18 +1,22 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 #include "SudokuSolver.h"
-#endif // TWODARRAY_H
+#endif // SOLVER_H
 class Challenge : public Sudoku
 {
 public:
     char choice;
-
+    SudokuSolver *soln;
 public:
+    Challenge(){
+        soln = new SudokuSolver();
+    }
     void userChoice()
     {
         char ch;
         printf("\nEnter any letter from A to E for a Sudoku Challenge: ");
-        scanf("%d", &choice);
+        fflush(stdin);
+        scanf("%c", &choice);
         if (choice == 'A' || choice == 'a')
         {
             board1();
@@ -34,52 +38,71 @@ public:
             board5();
         }
         displaySudoku();
-        printf("Do you want to enter your solution? (Y/N): ");
+        printf("\nDo you want to enter your solution? (Y/N): ");
         fflush(stdin);
-        scanf("%c",&ch);
-        if(ch=='Y'|| ch=='y'){
+        scanf("%c", &ch);
+        if (ch == 'Y' || ch == 'y')
+        {
             checkSolution();
         }
     }
-    void acceptAnswer(){
-        for(int i=0;i<sudoku->n;i++){
-            for(int j=0;j<sudoku->n;j++){
-                if(sudoku->arr[i][j]!=' '){
+    void acceptAnswer()
+    {
+        for (int i = 0; i < sudoku->n; i++)
+        {
+            for (int j = 0; j < sudoku->n; j++)
+            {
+                if (sudoku->arr[i][j] == ' ')
+                {
                     fflush(stdin);
-                    printf("Enter element for Row %d and Column %d: ",i+1,j+1);
-                    scanf("%c",&sudoku->arr[i][j]);
+                    printf("Enter element for Row %d and Column %d: ", i + 1, j + 1);
+                    scanf("%c", &sudoku->arr[i][j]);
                 }
             }
         }
     }
-    bool compare(SudokuSolver soln){
-        
-        soln.solve(0,0);
-        if(soln.sudoku == this->sudoku)
-            return true;
-        return false;// answer and input comparison
+    bool compare()
+    {
+        printf("MEOWW\n");
+        for (int i = 0; i < this->sudoku->n; i++)
+        {
+            for (int j = 0; j < this->sudoku->n; j++)
+            {
+                printf("Mewo %c == %c\n",soln->sudoku->arr[i][j],this->sudoku->arr[i][j]);
+                if (soln->sudoku->arr[i][j] != this->sudoku->arr[i][j])
+                    return false;
+            }
+        }
+        return true; // answer and input comparison
         // if right return 0 else return 1
     }
-    void checkSolution(){
-        int tries=3;
+    void checkSolution()
+    {
+        int tries = 3;
         bool val;
-        SudokuSolver soln;
-        soln.sudoku = this->sudoku;
-        while(tries!=0){
+        soln->sudoku->arr = this->sudoku->arr;
+        soln->solve(0, 0);
+        while (tries != 0)
+        {
             acceptAnswer();
-            val=compare(soln);
-            if(!val){
+            soln->displaySudoku();
+            val = compare();
+            if (!val)
+            {
                 printf("OOPS! Wrong Solution.Try Again!");
                 tries--;
             }
-            else{
+            else
+            {
                 printf("Congratulations! You're Right!");
+                break;
             }
         }
-        if(tries==0){
+        if (tries == 0)
+        {
             printf("The Solution was: \n");
-            soln.displaySudoku();
-            //display
+            soln->displaySudoku();
+            // display
         }
     }
     void board1()
@@ -270,5 +293,4 @@ public:
         sudoku->arr[8][6] = '9';
         sudoku->arr[8][7] = '7';
     }
-
 };

@@ -28,12 +28,12 @@ public:
             {
                 if (j % 3 == 0)
                 {
-                    printf("|\t");
+                    printf("|  ");
                 }
                 printf("%c\t", sudoku->arr[i][j]);
                 if (j == 8)
                 {
-                    printf("|\t");
+                    printf("|  ");
                 }
             }
             printf("\n");

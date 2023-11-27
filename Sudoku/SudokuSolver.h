@@ -7,7 +7,7 @@ public:
         {
             printf("\n\n<<<<<<<<<<<<< THE SOLVED SUDOKU >>>>>>>>>>>>>>>>>>>\n\n");
             displaySudoku();
-            exit(0);
+            return;
         }
         if (sudoku->arr[r][c] != ' ')
         { // looks for empty cells i.e. cells with zero
