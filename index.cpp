@@ -85,7 +85,7 @@ int main()
             }
             else
             {
-                // Ankit ne hi likh diya code matrix input ka
+                // Ankit ne hi likh  diya code matrix input ka
                 printf("\t\t\tSolve 9x9 sudoku!\n");
                 SudokuSolver s1;
                 s1.inputSudoku();

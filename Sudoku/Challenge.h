@@ -63,17 +63,17 @@ public:
     }
     bool compare()
     {
-        printf("MEOWW\n");
+        printf("Entries\n");
         for (int i = 0; i < this->sudoku->n; i++)
         {
             for (int j = 0; j < this->sudoku->n; j++)
             {
-                printf("Mewo %c == %c\n",soln->sudoku->arr[i][j],this->sudoku->arr[i][j]);
-                if (soln->sudoku->arr[i][j] != this->sudoku->arr[i][j])
-                    return false;
+                printf("Entry %c == %c\n",soln->sudoku->arr[i][j],this->sudoku->arr[i][j]);
+                if (soln->sudoku->arr[i][j] == this->sudoku->arr[i][j])
+                    return true;
             }
         }
-        return true; // answer and input comparison
+         return false; // answer and input comparison
         // if right return 0 else return 1
     }
     void checkSolution()
@@ -85,9 +85,9 @@ public:
         while (tries != 0)
         {
             acceptAnswer();
-            soln->displaySudoku();
+            //soln->displaySudoku();
             val = compare();
-            if (!val)
+            if (val)
             {
                 printf("OOPS! Wrong Solution.Try Again!");
                 tries--;
@@ -101,7 +101,7 @@ public:
         if (tries == 0)
         {
             printf("The Solution was: \n");
-            soln->displaySudoku();
+            //soln->displaySudoku();
             // display
         }
     }
