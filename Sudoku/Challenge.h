@@ -7,9 +7,14 @@ class Challenge : public Sudoku
 public:
     char choice;
     SudokuSolver *soln;
+    int tries;
+
 public:
-    Challenge(){
+    Challenge()
+    {
+        sudoku = new TwoDArray(9);
         soln = new SudokuSolver();
+        tries = 3;
     }
     void userChoice()
     {
@@ -17,6 +22,78 @@ public:
         printf("\nEnter any letter from A to E for a Sudoku Challenge: ");
         fflush(stdin);
         scanf("%c", &choice);
+        selectBoard();
+        displaySudoku();
+        printf("\nDo you want to enter your solution? (Y/N): ");
+        fflush(stdin);
+        scanf("%c", &ch);
+        if (ch == 'Y' || ch == 'y')
+        {
+            checkSolution();
+        }
+    }
+    void acceptAnswer()
+    {
+        for (int i = 0; i < sudoku->n; i++)
+        {
+            for (int j = 0; j < sudoku->n; j++)
+            {
+                if (this->sudoku->arr[i][j] == ' ')
+                {
+                    fflush(stdin);
+                    printf("Enter element for Row %d and Column %d: ", i + 1, j + 1);
+                    scanf("%c", &sudoku->arr[i][j]);
+                }
+            }
+        }
+    }
+    bool compare()
+    {
+        for (int i = 0; i < this->sudoku->n; i++)
+        {
+            for (int j = 0; j < this->sudoku->n; j++)
+            {
+                if (soln->sudoku->arr[i][j] != this->sudoku->arr[i][j])
+                    return false;
+            }
+        }
+        return true; // answer and input comparison
+        // if right return true else return false
+    }
+    void checkSolution()
+    {
+
+        bool val;
+        for (int i = 0; i < sudoku->n; i++)
+        {
+            for (int j = 0; j < sudoku->n; j++)
+                soln->sudoku->arr[i][j] = this->sudoku->arr[i][j];
+        }
+        soln->solve();
+        while (tries != 0)
+        {
+            acceptAnswer();
+            val = compare();
+            if (val == false)
+            {
+                printf("OOPS! Wrong Solution.Try Again!\n");
+                tries--;
+                selectBoard(); // to reset board
+            }
+            else
+            {
+                printf("Congratulations! You're Right!");
+                break;
+            }
+        }
+        if (tries == 0)
+        {
+            printf("The Solution was: \n");
+            soln->displaySudoku();
+        }
+    }
+    void selectBoard()
+    {
         if (choice == 'A' || choice == 'a')
         {
             board1();
@@ -37,76 +114,12 @@ public:
         {
             board5();
         }
-        displaySudoku();
-        printf("\nDo you want to enter your solution? (Y/N): ");
-        fflush(stdin);
-        scanf("%c", &ch);
-        if (ch == 'Y' || ch == 'y')
-        {
-            checkSolution();
-        }
-    }
-    void acceptAnswer()
-    {
-        for (int i = 0; i < sudoku->n; i++)
-        {
-            for (int j = 0; j < sudoku->n; j++)
-            {
-                if (sudoku->arr[i][j] == ' ')
-                {
-                    fflush(stdin);
-                    printf("Enter element for Row %d and Column %d: ", i + 1, j + 1);
-                    scanf("%c", &sudoku->arr[i][j]);
-                }
-            }
-        }
-    }
-    bool compare()
-    {
-        printf("Entries\n");
-        for (int i = 0; i < this->sudoku->n; i++)
-        {
-            for (int j = 0; j < this->sudoku->n; j++)
-            {
-                printf("Entry %c == %c\n",soln->sudoku->arr[i][j],this->sudoku->arr[i][j]);
-                if (soln->sudoku->arr[i][j] == this->sudoku->arr[i][j])
-                    return true;
-            }
-        }
-         return false; // answer and input comparison
-        // if right return 0 else return 1
-    }
-    void checkSolution()
-    {
-        int tries = 3;
-        bool val;
-        soln->sudoku->arr = this->sudoku->arr;
-        soln->solve(0, 0);
-        while (tries != 0)
-        {
-            acceptAnswer();
-            //soln->displaySudoku();
-            val = compare();
-            if (val)
-            {
-                printf("OOPS! Wrong Solution.Try Again!");
-                tries--;
-            }
-            else
-            {
-                printf("Congratulations! You're Right!");
-                break;
-            }
-        }
-        if (tries == 0)
-        {
-            printf("The Solution was: \n");
-            //soln->displaySudoku();
-            // display
-        }
     }
     void board1()
     {
+        for (int i = 0; i < sudoku->n; i++)
+            for (int j = 0; j < sudoku->n; j++)
+                this->sudoku->arr[i][j] = ' ';
         sudoku->arr[0][0] = '5';
         sudoku->arr[0][1] = '3';
         sudoku->arr[0][4] = '7';
@@ -148,6 +161,9 @@ public:
     }
     void board2()
     {
+        for (int i = 0; i < sudoku->n; i++)
+            for (int j = 0; j < sudoku->n; j++)
+                this->sudoku->arr[i][j] = ' ';
         sudoku->arr[0][0] = '3';
         sudoku->arr[0][3] = '8';
         sudoku->arr[0][5] = '1';
@@ -191,6 +207,9 @@ public:
     }
     void board3()
     {
+        for (int i = 0; i < sudoku->n; i++)
+            for (int j = 0; j < sudoku->n; j++)
+                this->sudoku->arr[i][j] = ' ';
         sudoku->arr[0][0] = '7';
         sudoku->arr[0][1] = '3';
         sudoku->arr[0][4] = '8';
@@ -232,6 +251,9 @@ public:
     }
     void board4()
     {
+        for (int i = 0; i < sudoku->n; i++)
+            for (int j = 0; j < sudoku->n; j++)
+                this->sudoku->arr[i][j] = ' ';
         sudoku->arr[1][5] = '3';
         sudoku->arr[1][7] = '8';
         sudoku->arr[1][8] = '5';
@@ -259,6 +281,9 @@ public:
     }
     void board5()
     {
+        for (int i = 0; i < sudoku->n; i++)
+            for (int j = 0; j < sudoku->n; j++)
+                this->sudoku->arr[i][j] = ' ';
         sudoku->arr[0][0] = '6';
         sudoku->arr[0][3] = '3';
         sudoku->arr[0][4] = '9';

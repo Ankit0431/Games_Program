@@ -111,8 +111,7 @@ public:
                         board->arr[i][j] = HUMANMOVE;
 
                         // Call minimax recursively and choose the minimum value
-                        best = min(best,
-                                   minimax(depth + 1, !isMax));
+                        best = min(best, minimax(depth + 1, !isMax));
                         // Undo the move
                         board->arr[i][j] = ' ';
                     }

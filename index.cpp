@@ -2,6 +2,10 @@
 #include "Tic-Tac-Toe/TicTacToe.h"
 #include "Sudoku/Sudoku.h"
 #include "Hangman/hangman.h"
+#include <csetjmp>
+#include <cstdlib>
+// std::jmp_buf solver_error_handler;
+using namespace std;
 int main()
 {
     int game, mode;
@@ -84,12 +88,14 @@ int main()
                 c1.userChoice();
             }
             else
-            {
+            {   
+                
                 // Ankit ne hi likh  diya code matrix input ka
                 printf("\t\t\tSolve 9x9 sudoku!\n");
                 SudokuSolver s1;
                 s1.inputSudoku();
-                s1.solve(0, 0);
+                s1.solve();
+                s1.displaySudoku();
             }
             break;
         }

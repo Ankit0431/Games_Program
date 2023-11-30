@@ -95,6 +95,11 @@ public:
         }
         return false;
     }
+    bool isSafe(int row, int col, char num)
+    {
+        /* Check if 'num' is not already placed in current row, current column and current 3x3 box */
+        return !checkRow(row, num) && !checkColumn(col, num) && !checkBox(row - row % 3, col - col % 3, num) && sudoku->arr[row][col] == ' ';
+    }
 };
 #include "Challenge.h"
 #ifndef SOLVER_H
