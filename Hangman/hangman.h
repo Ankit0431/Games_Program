@@ -15,7 +15,7 @@ private:
     string hint;
 
 public:
-    Hangman()
+    Hangman()//constructor
     {
         this->tries = 6;
     }
@@ -37,8 +37,8 @@ public:
     static int generateRandomNumber()
     {
         // Providing a seed value
-        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-        std::mt19937 gen(seed);
+        unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+        mt19937 gen(seed);
         // Define the range
         int lower_bound = 1;
         int upper_bound = 110;
