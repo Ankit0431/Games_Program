@@ -67,12 +67,12 @@ public:
             }
         }
         catch (const std::exception &e)
-        {
+        { // exception handling, file not found
             std::cerr << e.what() << '\n';
         }
     }
     void play()
-    {
+    { // actual play function
         char guess;
         readWordFromCsv(generateRandomNumber());
         word = new OneDArray(answer.length());
@@ -115,7 +115,7 @@ public:
         }
     }
     void displayHangedMan(int tries)
-    {
+    { // function to display UI of hangman
         switch (tries)
         {
         case 5:
@@ -197,7 +197,8 @@ public:
         }
         }
     }
-    void getAnswer(){
-        cout<<answer<<endl;
+    void getAnswer()
+    {
+        cout << answer << endl;
     }
 };

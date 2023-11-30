@@ -21,12 +21,12 @@ public:
         }
     }
     void updateArray(char elem, int m)
-    {
+    {//fucntion to update element in array using only one index input 
         m -= 1;
         arr[m / this->n][m % this->n] = elem;
     }
     void updateArray(char elem, int m1, int m2)
-    {
+    {//usual funciton to update array element
         arr[m1][m2] = elem;
     }
     char getArrayElement(int m)

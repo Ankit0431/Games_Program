@@ -18,7 +18,7 @@ public:
             printf("\tYour Move\n");
             printf("\tEnter Your Choice (Player 1): ");
             scanf("%d", &choice);
-            if (board->getArrayElement(choice) != ' ')
+            if (board->getArrayElement(choice) != ' ')//checks if the cell is empty or not
             {
                 printf("\nThis box has already been taken, please select a different box\n");
                 goto mistake;
@@ -28,7 +28,7 @@ public:
                 board->updateArray(player1, choice);
                 printf("\nBoard after move\n");
                 showTicTacToe();
-                if (hasAnyoneWon() != 0)
+                if (hasAnyoneWon() != 0)//returns 1 if computer wins, -1 if human wins and 0 if match is a tie.
                 {
                     switch (hasAnyoneWon())
                     {
@@ -41,14 +41,14 @@ public:
                     }
                     break;
                 }
-                if (!isMovesLeft())
+                if (!isMovesLeft())//checks if cells are left and if has nobody has won yet.
                 {
                     break;
                 }
             mistake2:
                 printf("\tEnter Your choice (Player 2): ");
                 scanf("%d", &choice);
-                if (board->getArrayElement(choice) != ' ')
+                if (board->getArrayElement(choice) != ' ')//checks if the cell is empty or not
                 {
                     printf("\nThis box has already been taken, please select a different box\n");
                     goto mistake2;
@@ -56,7 +56,7 @@ public:
                 board->updateArray(player2, choice);
                 printf("\nBoard after move\n");
                 showTicTacToe();
-                if (hasAnyoneWon() != 0)
+                if (hasAnyoneWon() != 0)//returns 1 if computer wins, -1 if human wins and 0 if match is a tie.
                 {
                     switch (hasAnyoneWon())
                     {
@@ -69,7 +69,7 @@ public:
                     }
                     break;
                 }
-                if (!isMovesLeft())
+                if (!isMovesLeft())//checks if cells are left and if nobody has won yet.
                 {
                     break;
                 }

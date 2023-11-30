@@ -11,14 +11,15 @@ public:
 
 public:
     Challenge()
-    {
+    { // constructor
         sudoku = new TwoDArray(9);
         soln = new SudokuSolver();
         tries = 3;
     }
     void userChoice()
-    {
+    { // function to enter user choice for sudoku board
         char ch;
+    again:
         printf("\nEnter any letter from A to E for a Sudoku Challenge: ");
         fflush(stdin);
         scanf("%c", &choice);
@@ -29,11 +30,16 @@ public:
         scanf("%c", &ch);
         if (ch == 'Y' || ch == 'y')
         {
-            checkSolution();
+            play();
+        }
+        else
+        {
+            printf("\nNo problem, try another matrix\n");
+            goto again;
         }
     }
     void acceptAnswer()
-    {
+    { // function to accept answer of sudoku from user
         for (int i = 0; i < sudoku->n; i++)
         {
             for (int j = 0; j < sudoku->n; j++)
@@ -48,7 +54,7 @@ public:
         }
     }
     bool compare()
-    {
+    { // function to compare user entered solution with solution from solve function
         for (int i = 0; i < this->sudoku->n; i++)
         {
             for (int j = 0; j < this->sudoku->n; j++)
@@ -60,9 +66,8 @@ public:
         return true; // answer and input comparison
         // if right return true else return false
     }
-    void checkSolution()
-    {
-
+    void play()
+    { // play function for actual implemention
         bool val;
         for (int i = 0; i < sudoku->n; i++)
         {
@@ -93,7 +98,7 @@ public:
         }
     }
     void selectBoard()
-    {
+    { // function to select board of user choice
         if (choice == 'A' || choice == 'a')
         {
             board1();

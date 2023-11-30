@@ -20,7 +20,7 @@ public:
         }
     }
     bool matchWithString(string match)
-    {
+    { // function to match contents of array with a string
         if (match.length() != size)
             return false;
         for (int i = 0; i < size; i++)
@@ -30,7 +30,8 @@ public:
         }
         return true;
     }
-    void insert(char elem, int pos){
+    void insert(char elem, int pos)
+    { // function to insert element in the array
         arr[pos] = elem;
     }
 };

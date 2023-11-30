@@ -166,7 +166,7 @@ public:
             printf("\tYour Move\n");
             printf("\tEnter Your Choice: ");
             scanf("%d", &choice);
-            if (board->getArrayElement(choice) != ' ')
+            if (board->getArrayElement(choice) != ' ') //check if the cell is filled or not
             {
                 printf("\nThis box has already been taken, please select a different box\n");
                 goto mistake;
@@ -177,7 +177,7 @@ public:
             showTicTacToe();
             if (hasAnyoneWon() != 0)
             {
-                switch (hasAnyoneWon())
+                switch (hasAnyoneWon())//check if anyone has won and switch accordingly
                 {
                 case 1:
                     printf("\t\t\tComputer Wins!\nBetter luck next time! GGs Only\n");
@@ -188,13 +188,13 @@ public:
                 }
                 break;
             }
-            if (!isMovesLeft())
+            if (!isMovesLeft()) //if no more moves left break
                 break;
             printf("\nComputer's Move!");
-            performBestMove(difficulty);
+            performBestMove(difficulty); //perfeom computers move
             printf("Board after Computer move:\n");
             showTicTacToe();
-            if (hasAnyoneWon() != 0)
+            if (hasAnyoneWon() != 0) //if someone has won
             {
                 switch (hasAnyoneWon())
                 {
@@ -210,7 +210,7 @@ public:
             if (!isMovesLeft())
                 break;
         }
-        if (hasAnyoneWon() == 0)
+        if (hasAnyoneWon() == 0) //tie case
         {
             printf("\n\t\tIts a Tie, Well played!\n");
         }
