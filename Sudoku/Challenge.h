@@ -34,8 +34,19 @@ public:
         }
         else
         {
-            printf("\nNo problem, try another matrix\n");
-            goto again;
+            printf("Do you want to try another matrix? (Y/N): \n");
+            fflush(stdin);
+            scanf("%c", &ch);
+            if (ch == 'Y' || ch == 'y')
+            {
+                printf("\nNo problem, try another matrix\n");
+                goto again;
+            }
+            else
+            {
+                printf("\nNo problem, be back whenever you feel ready, have a good one!\n");
+                return;
+            }
         }
     }
     void acceptAnswer()
